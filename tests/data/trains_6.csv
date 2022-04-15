@@ -1,0 +1,7 @@
+TRAIN_LINE, ROUTE_NAME, RUN_NUMBER, OPERATOR_ID
+El, Brown Line,E102, SJones
+Metra, UPN,M405, AJohnson
+Amtrak, Hiawatha,A006, LBeck
+El, Red Line,E432, LHill
+Amtrak, Hiawatha,A005, LBeck
+Metra, ,M623, ESanders

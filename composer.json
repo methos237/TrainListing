@@ -1,0 +1,28 @@
+{
+	 "require": {
+        "php": "^7.4|^8.0",
+		"ext-json": "*"
+	},
+	"require-dev": {
+	 	 "mockery/mockery": "^1.5",
+	 	 "phpunit/phpunit": "^9.5"
+	 },
+	"autoload": {
+		"psr-4": {
+			"Trains\\": "src/",
+			"ComponentSystem\\": "src/ComponentSystem/"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"Trains\\Test\\": "tests/"
+		}
+	},
+	"config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
