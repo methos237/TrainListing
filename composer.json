@@ -1,8 +1,13 @@
 {
 	 "require": {
         "php": "^7.4|^8.0",
-		"ext-json": "*"
-	},
+		"ext-json": "*",
+	 	"ext-curl": "*",
+	 	"ext-bcmath": "*",
+	 	"ext-mbstring": "*",
+	 	"ext-zlib": "*",
+	 	"ext-pdo": "*"
+	 },
 	"require-dev": {
 	 	 "mockery/mockery": "^1.5",
 	 	 "phpunit/phpunit": "^9.5"
@@ -10,7 +15,9 @@
 	"autoload": {
 		"psr-4": {
 			"Trains\\": "src/",
-			"ComponentSystem\\": "src/ComponentSystem/"
+			"ComponentSystem\\": "src/ComponentSystem/",
+			"Http\\": "src/ComponentSystem/Http/",
+			"Util\\": "src/ComponentSystem/Util/"
 		}
 	},
 	"autoload-dev": {

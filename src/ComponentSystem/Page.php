@@ -87,7 +87,8 @@ class Page extends Container {
 			<?php if($this->canonicalUrl !== null): ?>
 				<link rel="canonical" href="<?= htmlspecialchars($this->canonicalUrl) ?>">
 			<?php endif; ?>
-			<?= self::resolveDependencies($this->getDependencies()); ?>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.min.css">
+			<?= self::resolveDependencies($this->getDependencies()) ?>
 		</head>
 		<body>
 		<?php parent::display(); ?>

@@ -2,6 +2,9 @@
 
 namespace ComponentSystem;
 
+use Http\HttpResponse;
+use Http\HttpUtil;
+
 /**
  * A Component is the base building block of a page. A Container is made up of one or more components,
  * and a Page is made up of one or more Containers or Components. Each Component is a self-contained View and
@@ -31,6 +34,22 @@ abstract class Component {
 	 */
 	public function getLifetime(): int {
 		return self::DEFAULT_SHORT_CACHE_LIFETIME;
+	}
+	
+	/**
+	 * Create an HTTP response wrapping this component
+	 * @param int $status - status code to use
+	 * @param array $headers - any additional headers to use
+	 * @return HttpResponse
+	 */
+	public function toHttpResponse(int $status = 200, array $headers = []): HttpResponse {
+		$lifetime = $this->getLifetime();
+		if ($lifetime > 0) {
+			$headers["Cache-Control"] = "max-age=$lifetime";
+		} else {
+			$headers["Cache-Control"] = HttpUtil::buildCacheControlDirectives(HttpUtil::STANDARD_CACHE_CONTROL_CACHE_PREVENTION_DIRECTIVES);
+		}
+		return new HttpResponse($status, $this, $headers);
 	}
 	
 	/**

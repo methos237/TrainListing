@@ -9,7 +9,9 @@ class Header extends Component {
 	
 	public function display(): void { ?>
         <header>
-            <h1>Welcome to the Train Listing Parser</h1>
+            <div class="container" style="text-align: center">
+                <a href="/"><h1>Welcome to the Train Listing Parser</h1></a>
+            </div>
         </header>
 	<?php
 	}

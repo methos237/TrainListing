@@ -4,34 +4,33 @@ namespace Trains\Model;
 
 use RuntimeException;
 
-class TrainsModel {
+/**
+ * This class takes a CSV file with headers and converts it to an
+ * array of Train Objects
+ */
+class TrainsCSVParser {
 	
-	private const LINE_HEADER = "TRAIN_LINE";
-	private const ROUTE_HEADER = "ROUTE_NAME";
-	private const RUN_HEADER = "RUN_NUMBER";
-	private const OPERATOR_HEADER = "OPERATOR_ID";
-
-    private array $trains = [];
+	private array $trainDataArray;
 	
 	/**
-	 * @param string $trainData
+	 * Convert a new CSV file to an array of Train objects
+	 * @param string $trainData - the path to the CSV file
 	 */
     public function __construct ( string $trainData ) {
         if (!file_exists ($trainData)) {
 	        throw new RuntimeException("CSV File $trainData not found.");
         }
-		$dataArray = $this->parseCsvFile($trainData);
-		foreach ($dataArray as $data) {
-			$this->trains[] = new Train($data[self::LINE_HEADER], $data[self::ROUTE_HEADER], $data[self::RUN_HEADER], $data[self::OPERATOR_HEADER]);
+		$parsedData = $this->parseCsvFile($trainData);
+		foreach ($parsedData as $data) {
+			$this->trainDataArray[] = new Train($data['TRAIN_LINE'], $data['ROUTE_NAME'], $data['RUN_NUMBER'], $data['OPERATOR_ID']);
 		}
     }
 	
-	public function getTrains(): array {
-		return $this->trains;
-	}
-	
-	public function getNumberOfTrains(): int {
-		return count($this->trains);
+	/**
+	 * @return array - an array of Train objects
+	 */
+	public function getTrainDataArray(): array {
+		return $this->trainDataArray;
 	}
 	
 	/**

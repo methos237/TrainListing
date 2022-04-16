@@ -1,11 +1,9 @@
 <?php
-require_once ("../vendor/autoload.php");
 
-use ComponentSystem\Page;
-use Trains\View\Footer;
-use Trains\View\Header;
-use Trains\View\TrainListing;
+use Trains\Controller\TrainsController;
+use Http\HttpRequest;
 
-echo (new Page("Train Listing", "Lists train data from an uploaded CSV file", null, null, new TrainListing()))
-		->setHeader(new Header())
-		->setFooter(new Footer());
+require_once "../vendor/autoload.php";
+require_once "ComponentSystem/constants.conf.php";
+
+((new TrainsController(HttpRequest::current()))->handleRequest())->send();
