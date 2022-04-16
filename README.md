@@ -1,6 +1,9 @@
 # TrainListing
 Coding Exercise for Wellspring
 
+James Knox Polk 
+[james.knox.polk.cs@gmail.com](mailto:james.knox.polk.cs@gmail.com)
+
 # Installation
  * Clone repo to applicable htdocs folder
  * run ```$ composer install``` from the doc root
